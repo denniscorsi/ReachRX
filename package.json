@@ -7,7 +7,8 @@
     "build-frontend": "webpack --mode production",
     "build-backend": "tsc",
     "build": "npm run build-frontend && npm run build-backend",
-    "start": "nodemon dist/server/server.js",
+    "start": "node dist/server/server.js",
+    "dev": "webpack serve --mode development  & nodemon dist/server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

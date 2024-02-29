@@ -10,7 +10,15 @@ module.exports = {
   },
 
   devServer: {
-    static: './dist',
+    static: {
+      publicPath: path.join(__dirname, 'dist'),
+    },
+    proxy: [
+      {
+        context: ['/hi'],
+        target: 'http://localhost:3002',
+      },
+    ],
   },
 
   module: {
