@@ -1,3 +1,26 @@
 body {
-  background-color: blue;
+  background-color: #073268;
+  font-family: 'Poppins', monospace;
+}
+
+h1 {
+  color: #fff;
+  text-align: center;
+  font-size: 48px;
+}
+
+h2 {
+  color: #fff;
+}
+
+h3 {
+  color: #3788f7;
+}
+
+.header {
+  padding: 5px;
+}
+
+img.header {
+  width: 170px;
 }

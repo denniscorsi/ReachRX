@@ -15,10 +15,6 @@ app.get('/', (req, res) => {
   return res.status(200).sendFile(index);
 });
 
-app.get('/hi', (req, res) => {
-  return res.status(200).send('hiiiii');
-});
-
 // serve static assetts
 app.use('/dist', express.static(path.join(__dirname, '..')));
 
