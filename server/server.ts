@@ -14,19 +14,15 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   const index = path.join(__dirname, '../index.html');
-
-  // Testing
-  Doctor.create({
-    name: 'Test Doctor',
-    location: 'NY',
-  }).then(
-    (doctor) => {
-      console.log('doctor saved:', doctor);
-    },
-    (err) => console.error(err)
-  );
-
   return res.status(200).sendFile(index);
+});
+
+app.get('/doctors', (req, res) => {
+  console.log('entered get doctors');
+
+  Doctor.find({}).then((doctors) => {
+    res.status(200).json(doctors);
+  });
 });
 
 // serve static assetts

@@ -15,7 +15,7 @@ module.exports = {
     },
     proxy: [
       {
-        context: ['/hi'],
+        context: ['/hi', '/doctors'],
         target: 'http://localhost:3002',
       },
     ],

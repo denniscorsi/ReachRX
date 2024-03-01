@@ -7,6 +7,7 @@ const Schema = mongoose.Schema;
 const doctorSchema = new Schema({
   name: { type: String, required: true },
   location: { type: String, required: true },
+  imgSrc: { type: String, required: true },
   availableTimes: [],
   bookings: [],
 });
