@@ -7,7 +7,6 @@ import Grid from '@mui/material/Grid';
 const fetchDoctors = async () => {
   const response = await fetch('/doctors');
   const doctors = await response.json();
-  console.log({ doctors });
   return doctors;
 };
 

@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 
 const slotSchema = new Schema({
   date: { type: Date, required: true },
-  time: { type: Number, required: true },
+  time: { type: String, required: true },
 });
 
 const doctorSchema = new Schema({

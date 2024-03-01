@@ -34,5 +34,22 @@ img.doctor {
 
 .flex {
   display: flex;
+}
+
+.column {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.between {
   justify-content: space-between;
+}
+
+.stretch {
+  justify-content: stretch;
+}
+
+.time-btn {
+  width: 100px;
+  height: 50px;
 }

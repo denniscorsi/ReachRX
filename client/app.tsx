@@ -24,8 +24,8 @@ const queryClient = new QueryClient({
 const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<DoctorGrid />} />
           <Route path="/doctor" element={<DoctorPage />} />

@@ -12,7 +12,7 @@ const DoctorPaper = styled(Paper)({
 
 interface timeSlot {
   date: Date;
-  time: number;
+  time: string;
 }
 
 interface DoctorCardProps {
@@ -51,7 +51,7 @@ const DoctorCard: React.FC<DoctorCardProps> = (props) => {
         <Box p={1}>
           <Typography variant="h5">{name}</Typography>
           <Typography variant="body1">{location}</Typography>
-          <Box className="flex" paddingTop={1}>
+          <Box className="flex between" paddingTop={1}>
             <Chip
               icon={icon}
               label={availability}
