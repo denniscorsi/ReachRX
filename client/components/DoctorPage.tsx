@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Typography, Paper, Box, Button } from '@mui/material';
 
-import ConfirmDialog from './confirmDialog';
+import ConfirmDialog from './ConfirmDialog';
 
 const DoctorPage = () => {
   const locationHook = useLocation();
@@ -10,12 +10,22 @@ const DoctorPage = () => {
     locationHook.state.props;
 
   const [openDialog, setOpenDialog] = useState(false);
+  const [selectedTime, setSelectedTime] = useState(null);
 
-  const handleOpen = () => {
+  const handleOpen = (event) => {
+    setSelectedTime(event.currentTarget.id);
     setOpenDialog(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (isConfirmed) => {
+    if (isConfirmed) {
+      console.log({ selectedTime });
+
+      const button = document.getElementById(selectedTime) as HTMLButtonElement;
+      console.log(button);
+
+      button.disabled = true;
+    }
     setOpenDialog(false);
   };
 
@@ -24,16 +34,22 @@ const DoctorPage = () => {
     day: 'numeric',
   };
   const timeOptions = availableTimes.map((timeSlot) => {
-    const date = new Date(timeSlot.date);
+    const date = new Date(timeSlot.date).toLocaleDateString(
+      undefined,
+      dateOptions
+    );
+    const datetimeString = `${date} at ${timeSlot.time}`;
     return (
       <Button
         className="flex column time-btn"
-        variant="outlined"
+        variant="contained"
         sx={{ textTransform: 'none', margin: '5px 10px' }}
         onClick={handleOpen}
+        id={datetimeString}
+        disabled={false}
       >
         <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>
-          {date.toLocaleDateString(undefined, dateOptions)}
+          {date}
         </Typography>
         <Typography variant="subtitle2" sx={{ color: 'black' }}>
           {timeSlot.time}
@@ -58,6 +74,8 @@ const DoctorPage = () => {
         handleClose={handleClose}
         handleOpen={handleOpen}
         openDialog={openDialog}
+        name={name}
+        timeSlot={selectedTime}
       />
     </Box>
   );

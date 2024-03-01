@@ -23,6 +23,7 @@ button to return to main page
 add icon for tab
 deal with am, pm times
 deal with limitng time slots showing on page. Allow to look at later dates. 
+Work on the stlying of disabling  buttons 
 
 Testing:
 
