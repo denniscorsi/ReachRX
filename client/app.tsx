@@ -1,8 +1,16 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+} from 'react-router-dom';
 
 import Header from './components/Header';
 import DoctorGrid from './components/DoctorGrid';
+import DoctorPage from './components/DoctorPage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -17,7 +25,12 @@ const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Header />
-      <DoctorGrid />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<DoctorGrid />} />
+          <Route path="/doctor" element={<DoctorPage />} />
+        </Routes>
+      </BrowserRouter>
     </QueryClientProvider>
   );
 };

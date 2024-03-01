@@ -26,6 +26,7 @@ const DoctorGrid = () => {
         location={doctor.location}
         availableTimes={doctor.availableTimes}
         bookings={doctor.bookings}
+        doctorId={doctor._id}
       />
     </Grid>
   ));

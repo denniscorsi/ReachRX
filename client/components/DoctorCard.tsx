@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/system';
 import { Typography, Chip, Paper, Box, Button } from '@mui/material';
 import EventBusyRoundedIcon from '@mui/icons-material/EventBusyRounded';
@@ -20,15 +21,12 @@ interface DoctorCardProps {
   location: string;
   availableTimes: Array<timeSlot>;
   bookings: Array<timeSlot>;
+  doctorId: any;
 }
 
-const DoctorCard: React.FC<DoctorCardProps> = ({
-  imgSrc,
-  name,
-  location,
-  availableTimes,
-  bookings,
-}) => {
+const DoctorCard: React.FC<DoctorCardProps> = (props) => {
+  const { imgSrc, name, location, availableTimes, bookings, doctorId } = props;
+
   const isAvailable = availableTimes.length > 0;
 
   let availability: string = 'no available slots';
@@ -37,6 +35,12 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
     availability = 'available slots';
     icon = <EventAvailableRoundedIcon />;
   }
+
+  const navigate = useNavigate();
+
+  const goToDoctor = () => {
+    navigate('/doctor', { state: { props } });
+  };
 
   return (
     <Box>
@@ -54,7 +58,11 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
               disabled={!isAvailable}
               color={'primary'}
             />
-            {isAvailable && <Button variant="contained">Book Time</Button>}
+            {isAvailable && (
+              <Button variant="contained" onClick={goToDoctor}>
+                Book Time
+              </Button>
+            )}
           </Box>
         </Box>
       </DoctorPaper>
