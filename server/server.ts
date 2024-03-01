@@ -25,6 +25,35 @@ app.get('/doctors', (req, res) => {
   });
 });
 
+// Remove this later. This is to add to database
+app.get('/doctors/add', (req, res) => {
+  Doctor.create({
+    name: 'Dr. .......',
+    location: 'Jersey City, NJ',
+    imgSrc: 'img',
+    availableTimes: [
+      {
+        date: new Date('2024-03-10'),
+        time: 11,
+      },
+      {
+        date: new Date('2024-03-10'),
+        time: 11.5,
+      },
+      {
+        date: new Date('2024-03-11'),
+        time: 14.5,
+      },
+    ],
+    bookings: [
+      {
+        date: new Date('2024-03-10'),
+        time: 12,
+      },
+    ],
+  });
+});
+
 // serve static assetts
 app.use('/dist', express.static(path.join(__dirname, '..')));
 

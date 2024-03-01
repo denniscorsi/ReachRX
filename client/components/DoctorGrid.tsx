@@ -24,6 +24,8 @@ const DoctorGrid = () => {
         imgSrc={doctor.imgSrc}
         name={doctor.name}
         location={doctor.location}
+        availableTimes={doctor.availableTimes}
+        bookings={doctor.bookings}
       />
     </Grid>
   ));
