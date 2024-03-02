@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/system';
 import { Typography, Chip, Paper, Box, Button } from '@mui/material';
@@ -27,6 +27,14 @@ interface DoctorCardProps {
 const DoctorCard: React.FC<DoctorCardProps> = (props) => {
   const { imgSrc, name, location, availableTimes, bookings, doctorId } = props;
 
+  const [imageSrc, setImageSrc] = useState(imgSrc);
+
+  const handleImageError = () => {
+    setImageSrc(
+      'https://kyruus-app-static.kyruus.com/providermatch/atlantic/photos/orig/pmc-avatar-neutral_316x392.png'
+    );
+  };
+
   const isAvailable = availableTimes.length > 0;
 
   let availability: string = 'no available slots';
@@ -46,7 +54,11 @@ const DoctorCard: React.FC<DoctorCardProps> = (props) => {
     <Box>
       <DoctorPaper elevation={12} square={false}>
         <Box sx={{ height: '200px', overflow: 'hidden' }}>
-          <img className="doctor" src={imgSrc}></img>
+          <img
+            className="doctor"
+            src={imageSrc}
+            onError={handleImageError}
+          ></img>
         </Box>
         <Box p={1}>
           <Typography variant="h5">{name}</Typography>
