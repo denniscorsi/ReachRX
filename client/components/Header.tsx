@@ -7,6 +7,7 @@ const Header = () => {
       <Link to="/">
         <img
           className="header"
+          alt="ReachRX logo"
           src="https://www.getrepreach.com/assets/images/reach-rx-logo-white.png"
         />
       </Link>

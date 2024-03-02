@@ -25,6 +25,9 @@ const DoctorPage = () => {
       console.log(button);
 
       button.disabled = true;
+
+      
+
     }
     setOpenDialog(false);
   };

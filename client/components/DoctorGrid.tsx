@@ -14,7 +14,7 @@ const DoctorGrid = () => {
   const { data, isLoading } = useQuery('doctors', fetchDoctors);
 
   if (isLoading) {
-    return <h1>loading</h1>;
+    return <h1>loading...</h1>;
   }
 
   const Doctors = data.map((doctor) => (

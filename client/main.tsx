@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './app';
+import App from './App';
 import '../styles.css';
 
 const container = document.getElementById('root') as HTMLElement;
