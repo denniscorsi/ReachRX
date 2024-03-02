@@ -30,11 +30,11 @@ const DoctorPage = () => {
             onError={handleImageError}
           ></img>
         </Box>
-        <Box>
+        <Box margin={2}>
           <Typography variant="h5">{name}</Typography>
           <Typography variant="body1">{location}</Typography>
         </Box>
-        <Box>{timeOptions}</Box>
+        <Box margin={2}>{timeOptions}</Box>
       </Paper>
     </Box>
   );
