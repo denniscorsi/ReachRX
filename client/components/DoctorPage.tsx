@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Typography, Paper, Box, Button } from '@mui/material';
+import { Typography, Paper, Box } from '@mui/material';
 import TimeSlot from './TimeSlot';
 
-const DoctorPage = () => {
+const DoctorPage: React.FC = () => {
   const locationHook = useLocation();
-  const { imgSrc, name, location, availableTimes, bookings, doctorId } =
-    locationHook.state.props;
+  const { imgSrc, name, location, availableTimes } = locationHook.state.props;
 
-  const [imageSrc, setImageSrc] = useState(imgSrc);
+  const [imageSrc, setImageSrc] = useState<string>(imgSrc);
 
+  // Replace image with default if link is broken or missing
   const handleImageError = () => {
     setImageSrc(
       'https://kyruus-app-static.kyruus.com/providermatch/atlantic/photos/orig/pmc-avatar-neutral_316x392.png'

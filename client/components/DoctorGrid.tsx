@@ -4,13 +4,14 @@ import DoctorCard from './DoctorCard';
 
 import Grid from '@mui/material/Grid';
 
+// Request all doctors from the server
 const fetchDoctors = async () => {
   const response = await fetch('/doctors');
   const doctors = await response.json();
   return doctors;
 };
 
-const DoctorGrid = () => {
+const DoctorGrid: React.FC = () => {
   const { data, isLoading } = useQuery('doctors', fetchDoctors);
 
   if (isLoading) {

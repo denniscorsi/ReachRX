@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Typography, Paper, Box, Button } from '@mui/material';
+import { Typography, Button } from '@mui/material';
 
 import ConfirmDialog from './ConfirmDialog';
 
@@ -9,16 +8,23 @@ const dateOptions: Intl.DateTimeFormatOptions = {
   day: 'numeric',
 };
 
-const TimeSlot = ({ timeSlot, name }) => {
-  const [openDialog, setOpenDialog] = useState(false);
-  const [selectedTime, setSelectedTime] = useState(null);
-  const [disabled, setDisabled] = useState(false);
+type TimeSlotProps = {
+  timeSlot: any;
+  name: string;
+};
 
+const TimeSlot: React.FC<TimeSlotProps> = ({ timeSlot, name }) => {
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [disabled, setDisabled] = useState<boolean>(false);
+
+  // To open confirmation dialog
   const handleOpen = (event) => {
     setSelectedTime(event.currentTarget.id);
     setOpenDialog(true);
   };
 
+  // To close confirmation dialog
   const handleClose = (isConfirmed) => {
     if (isConfirmed) {
       setDisabled(true);
@@ -26,6 +32,7 @@ const TimeSlot = ({ timeSlot, name }) => {
     setOpenDialog(false);
   };
 
+  // Format date (which comes in as a string from the database)
   const date = new Date(timeSlot.date).toLocaleDateString(
     undefined,
     dateOptions

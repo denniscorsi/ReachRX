@@ -1,64 +1,41 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import mongoose from 'mongoose';
 import path from 'path';
 import dotenv from 'dotenv';
 import Doctor from './models/doctorModel.js';
 dotenv.config();
 
-const PORT = 3002;
+const PORT: number = 3002;
 
+// Connect database
 mongoose.connect(process.env.MONGO_URI);
 
 const app = express();
 app.use(express.json());
 
-app.get('/', (req, res) => {
+// Serve homepage
+app.get('/', (req: Request, res: Response) => {
   const index = path.join(__dirname, '../index.html');
   return res.status(200).sendFile(index);
 });
 
-app.get('/doctors', (req, res) => {
-  console.log('entered get doctors');
-
+// Query database for all doctors and send to client
+app.get('/doctors', (req: Request, res: Response) => {
   Doctor.find({}).then((doctors) => {
     res.status(200).json(doctors);
   });
 });
 
-// Remove this later. This is to add to database
-app.get('/doctors/add', (req, res) => {
-  Doctor.create({
-    name: 'Dr. .......',
-    location: 'Jersey City, NJ',
-    imgSrc: 'img',
-    availableTimes: [
-      {
-        date: new Date('2024-03-10'),
-        time: 11,
-      },
-      {
-        date: new Date('2024-03-10'),
-        time: 11.5,
-      },
-      {
-        date: new Date('2024-03-11'),
-        time: 14.5,
-      },
-    ],
-    bookings: [
-      {
-        date: new Date('2024-03-10'),
-        time: 12,
-      },
-    ],
-  });
-});
-
-// serve static assetts
+// Serve static assetts
 app.use('/dist', express.static(path.join(__dirname, '..')));
 
-// global error handler
-app.use((err, req, res, next) => {
+// Catch-all route handler for any requests to an unknown route
+app.use('*', (req: Request, res: Response) => {
+  res.status(404).send('Page not found');
+});
+
+// Global error handler
+app.use((err, req: Request, res: Response, next: NextFunction) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
     status: 500,
@@ -69,4 +46,5 @@ app.use((err, req, res, next) => {
   res.status(errObj.status).json(errObj.message);
 });
 
+// Start server
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));

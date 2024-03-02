@@ -1,17 +1,12 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  useNavigate,
-} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import DoctorGrid from './components/DoctorGrid';
 import DoctorPage from './components/DoctorPage';
 
+// This is for the useQuery cache
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -21,7 +16,7 @@ const queryClient = new QueryClient({
   },
 });
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>

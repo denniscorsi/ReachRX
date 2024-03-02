@@ -6,7 +6,6 @@ import EventBusyRoundedIcon from '@mui/icons-material/EventBusyRounded';
 import EventAvailableRoundedIcon from '@mui/icons-material/EventAvailableRounded';
 
 const DoctorPaper = styled(Paper)({
-  // width: '100px',
   overflow: 'hidden',
 });
 
@@ -25,18 +24,19 @@ interface DoctorCardProps {
 }
 
 const DoctorCard: React.FC<DoctorCardProps> = (props) => {
-  const { imgSrc, name, location, availableTimes, bookings, doctorId } = props;
+  const { imgSrc, name, location, availableTimes } = props;
 
   const [imageSrc, setImageSrc] = useState(imgSrc);
 
+  // Replace image with default if link is broken or missing
   const handleImageError = () => {
     setImageSrc(
       'https://kyruus-app-static.kyruus.com/providermatch/atlantic/photos/orig/pmc-avatar-neutral_316x392.png'
     );
   };
 
+  // Determine if the doctor has any availability, and assign values accordingly 
   const isAvailable = availableTimes.length > 0;
-
   let availability: string = 'no available slots';
   let icon = <EventBusyRoundedIcon />;
   if (isAvailable) {
@@ -45,7 +45,6 @@ const DoctorCard: React.FC<DoctorCardProps> = (props) => {
   }
 
   const navigate = useNavigate();
-
   const goToDoctor = () => {
     navigate('/doctor', { state: { props } });
   };
