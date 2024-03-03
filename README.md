@@ -1,10 +1,11 @@
 #### Run Instructions
 
-- Add a file named `.env` into the root directory and put into it `MONGO_URI=` followed by the string sent to you via email.
-- Install dependencies with `npm install`
-- Build the project with `npm run build`
-- Start the app locally with `npm start`
-- The server is on port 3002, so open a browser and go to http://localhost:3002/
+1. Clone the repo to your local computer.
+2. Add a file named `.env` into the root directory and put into it `MONGO_URI=` followed by the string sent to you via email.
+3. Install dependencies with `npm install`.
+4. Build the project with `npm run build`.
+5. Start the app locally with `npm start`.
+6. The server is on port 3002, so open a browser and go to http://localhost:3002/.
 
 ---
 
