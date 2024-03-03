@@ -1,14 +1,14 @@
 import React from 'react';
 import { render, screen, waitFor, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { QueryClient, QueryClientProvider } from 'react-query';
-const queryClient = new QueryClient();
 
 import App from '../client/App';
 
 describe('Initial App Contents', () => {
-  beforeEach(() => {
-    const app = render(<App />);
+  beforeEach(async () => {
+    await act(async () => {
+      render(<App />);
+    });
   });
   // screen.debug();
 
