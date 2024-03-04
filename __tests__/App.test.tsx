@@ -29,30 +29,5 @@ describe('Initial App Contents', () => {
     expect(screen.queryByText('lorem ipsum')).not.toBeInTheDocument();
   });
 
-  // it('applies css', () => {
-  //   // const { container } = render(<App />);
-  //   // expect(container.querySelector('body')).toHaveStyle(
-  //   //   'background-color: #073268'
-  //   // );
-
-  //   // const body = document.body;
-  //   const body = document.documentElement;
-  //   expect(getComputedStyle(body).backgroundColor).toBe('#073268');
-  // });
 });
 
-// // The following tests are based on the development database contents. These should be altered if the dev database is altered.
-// describe('Fetched App Contents', () => {
-//   beforeEach(() => {
-//     render(<App />);
-//   });
-
-//   it('renders Dr. Jared Reid', async () => {
-//     await waitFor(() => {
-//       expect(screen.queryByText('loading...')).toBeNull();
-//     });
-
-//     // Assert on the content that should be rendered after data fetch completes
-//     expect(screen.getByText('Dr. Jared Reid')).toBeInTheDocument();
-//   });
-// });
